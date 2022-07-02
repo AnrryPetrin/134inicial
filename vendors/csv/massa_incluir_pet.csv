@@ -1,0 +1,5 @@
+pet_id,category_id,category_name,pet_name,tags_id,tags_name,status
+512901,1,cachorro,Dante,1,vacinado,available
+512902,2,gato,Bichano,2,castrado,available
+512903,3,peixe,Nemo,3,registrado,available
+512904,2,gato,Costelinha,1,vacinado,available
