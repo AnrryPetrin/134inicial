@@ -31,6 +31,7 @@ def teste_incluir_pet():
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(corpo_do_resultado_obtido)
 
+
     # valida
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == pet_id_esperado
