@@ -20,23 +20,22 @@ def teste_incluir_pet():
     # resultados esperados
     status_code_esperado = 200
     pet_id_esperado = 5189529
-    pet_nome_esperado = "Hex"
-    pet_nome_categoria_esperado = "cachorro"
-    pet_nome_tag_esperado = "vacinado"
+    pet_nome_esperado = 'Hex'
+    pet_nome_categoria_esperado = 'cachorro'
+    pet_nome_tag_esperado = 'vacinado'
 
     # executa
     resultado_obtido = requests.post(
         url=url,
         headers=headers,
-        data=open('C:\\Users\\anrry\\PycharmProjects\\134inicial\\vendors\\json\\pet1.json')
+        data=open('../../vendors/json/pet1.json')
     )
 
-    # retorno
+    # valida
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
 
-    # valida
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == pet_id_esperado
     assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
@@ -52,9 +51,9 @@ def teste_consultar_pet():
     # resuldados esperados
     status_code_esperado = 200
     pet_id_esperado = 5189529
-    pet_nome_esperado = "Hex"
-    pet_nome_categoria_esperado = "cachorro"
-    pet_nome_tag_esperado = "vacinado"
+    pet_nome_esperado = 'Hex'
+    pet_nome_categoria_esperado = 'cachorro'
+    pet_nome_tag_esperado = 'vacinado'
 
     # executa
     resultado_obtido = requests.get(
@@ -62,12 +61,11 @@ def teste_consultar_pet():
         headers=headers
     )
 
-    # retorno
+    # valida
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
 
-    # valida
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == pet_id_esperado
     assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
@@ -82,23 +80,22 @@ def teste_alterar_pet():
     # resultados esperados
     status_code_esperado = 200
     pet_id_esperado = 5189529
-    pet_nome_esperado = "Hex"
-    pet_nome_categoria_esperado = "cachorro"
-    pet_nome_tag_esperado = "vacinado"
-    pet_status_esperado = "pending"
+    pet_nome_esperado = 'Hex'
+    pet_nome_categoria_esperado = 'cachorro'
+    pet_nome_tag_esperado = 'vacinado'
+    pet_status_esperado = 'pending'
     # executa
     resultado_obtido = requests.put(
         url=url,
         headers=headers,
-        data=open('C:\\Users\\anrry\\PycharmProjects\\134inicial\\vendors\\json\\pet2.json')
+        data=open('../../vendors/json/pet2.json')
     )
 
-    # retorno
+    # valida
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
 
-    # valida
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == pet_id_esperado
     assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
@@ -123,12 +120,11 @@ def teste_excluir_pet():
         headers=headers
     )
 
-    # retorno
+    # valida
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
 
-    # valida
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['code'] == status_code_esperado
     assert corpo_do_resultado_obtido['type'] == tipo_esperado
@@ -137,7 +133,7 @@ def teste_excluir_pet():
 
 @pytest.mark.parametrize(
     'pet_id,category_id,category_name,pet_name,tags_id,tags_name,status',
-    ler_csv('C:\\Users\\anrry\\PycharmProjects\\134inicial\\vendors\\csv\\massa_incluir_pet.csv')
+    ler_csv('../../vendors/csv/massa_incluir_pet.csv')
 )
 def teste_incluir_pet_em_massa(pet_id, category_id, category_name, pet_name, tags_id, tags_name, status):
     # 1. configura
@@ -174,12 +170,11 @@ def teste_incluir_pet_em_massa(pet_id, category_id, category_name, pet_name, tag
         data=corpo_json
     )
 
-    # retorno
+    # valida
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
 
-    # valida
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == int(pet_id)
     assert corpo_do_resultado_obtido['name'] == pet_name

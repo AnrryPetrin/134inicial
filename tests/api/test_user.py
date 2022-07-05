@@ -26,15 +26,14 @@ def teste_incluir_usuario():
     resultado_obtido = requests.post(
         url=url,
         headers=headers,
-        data=open('C:\\Users\\anrry\\PycharmProjects\\134inicial\\vendors\\json\\usuario1.json')
+        data=open('../../vendors/json/usuario1.json')
     )
 
-    # retorno
+    # valida
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
 
-    # valida
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['code'] == codigo_esperado
     assert corpo_do_resultado_obtido['type'] == tipo_esperado
@@ -59,12 +58,11 @@ def teste_login():
         headers=headers
     )
 
-    # retorno
+    # valida
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
 
-    # valida
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['code'] == codigo_esperado
     assert corpo_do_resultado_obtido['type'] == tipo_esperado
@@ -74,5 +72,4 @@ def teste_login():
     mensagem_extraida = corpo_do_resultado_obtido.get('message')
     print(f'mensagem = {mensagem_extraida}')
     token = mensagem_extraida[23:]
-    # [inicio:fim:passos]
     print(f'tokem = {token}')
