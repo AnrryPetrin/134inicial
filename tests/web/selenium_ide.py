@@ -28,3 +28,13 @@ class TestComprarPassagem:
         self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
         assert self.driver.find_element(By.CSS_SELECTOR, "h1").text == "Thank you for your purchase today!"
         self.driver.find_element(By.CSS_SELECTOR, ".hero-unit").click()
+
+    def test_login_positivo(self):
+        self.driver.get("https://www.blazedemo.com/")
+        self.driver.set_window_size(1456, 1032)
+        self.driver.find_element(By.LINK_TEXT, "home").click()
+        self.driver.find_element(By.ID, "email").send_keys("emailde@teste.com")
+        self.driver.find_element(By.ID, "password").send_keys("senhadeteste")
+        self.driver.find_element(By.CSS_SELECTOR, ".checkbox > label").click()
+        assert self.driver.find_element(By.CSS_SELECTOR, ".panel-heading").text == "Login"
+        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
