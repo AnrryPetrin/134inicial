@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 class TestComprarPassagem:
     def setup_method(self,):
-        self.driver = webdriver.Edge('../../vendors/drivers/msedgedriver103.0.1264.49.exe')
+        self.driver = webdriver.Chrome()
         self.vars = {}
 
     def teardown_method(self,):
